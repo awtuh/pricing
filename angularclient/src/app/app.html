@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>{{ title() }}</h1>
+  
+  <div class="pricing-section">
+    <h2>💰 Prix de l'Or</h2>
+    
+    <button (click)="refreshPricing()" [disabled]="isLoading">
+      {{ isLoading ? 'Chargement...' : 'Actualiser' }}
+    </button>
+    
+    <div *ngIf="isLoading">
+      ⏳ Chargement des données...
+    </div>
+    
+    <div *ngIf="error">
+      ❌ {{ error }}
+    </div>
+    
+    <div *ngIf="pricingData && !isLoading">
+      <h3>Données reçues :</h3>
+      <pre>{{ pricingData }}</pre>
+    </div>
+  </div>
+  
+  <router-outlet></router-outlet>
+</div>
